@@ -97,7 +97,7 @@ level in ~3 minutes, by **probing reasoning, not lecturing**:
    `profile.native_language` is empty, also ask once which language to explain in and save it with
    `record {action: "profile_set", native_language: "<lang>"}` — shared across courses, ask only when
    empty.
-2. Ask 5–8 small questions, one at a time — a one-line scenario and a judgment ("a read replica is 2s
+2. Tell the learner it's a short placement (~6 quick questions) and ask 5–8 small questions **one at a time, announcing where they are each time** ("question 2 of ~6") — a one-line scenario and a judgment ("a read replica is 2s
    behind; what guarantee just broke?"; "you add a 5th cache node — modulo vs consistent hashing,
    what fraction of keys move?"; "where does an L4 load balancer operate and what can't it do?").
    Climb while they're right; settle one level below the first where they miss twice.
