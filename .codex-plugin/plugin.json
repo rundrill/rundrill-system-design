@@ -1,6 +1,6 @@
 {
   "name": "rundrill-system-design",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "System-design coach — learn to design distributed systems and prep for the FAANG system design interview by reviewing flawed designs, defending tradeoffs, and running mock interviews, with drills, progress, and mistake memory, inside your AI agent.",
   "author": {
     "name": "RunDrill",
