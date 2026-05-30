@@ -63,7 +63,7 @@ server's brief already instructs this; honour it.
 - `track` — the in-scope goal: `core` (learn + design systems) always, optionally `interview-prep`
   (the interview-performance layer). `track_needs_set` true means ask once (the **goal gate** below).
 - `banner` — a pre-rendered dashboard (commit grid + per-level progress bars + counters). Print it
-  verbatim inside a fenced code block — no language tag, so it renders in monospace; don't reformat it.
+  verbatim inside a ```` ```bash ```` fenced code block (renders in monospace); don't reformat it.
 - `misconceptions` — open mistakes and the most common named ones.
 - `profile` — `domains`/`interests`/`persona` (anchor examples in the learner's world);
   `native_language` (see **Language**); `habit_anchor` (a daily-routine cue). Shared across courses.
@@ -73,7 +73,7 @@ server's brief already instructs this; honour it.
 
 If invoked with no argument, run `status`, then continue into the next right subcommand.
 
-**status** — call `status`. **Print `banner` verbatim inside one fenced code block — no language tag, so it renders in monospace** (the motivator:
+**status** — call `status`. **Print `banner` verbatim inside one ```` ```bash ```` fenced code block (renders in monospace)** (the motivator:
 a commit grid + per-level bars; never re-align or swap its glyphs). Below it, in plain words: the
 level + `milestone` (e.g. "6 of 21 components solid"), the streak (and, if
 `engagement.days_since_last_drill ≥ 2`, one neutral "last drill: N days ago" line — no guilt), and
