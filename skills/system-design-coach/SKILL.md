@@ -82,7 +82,7 @@ level + `milestone` (e.g. "6 of 21 components solid"), the streak (and, if
 the most common open misconception if any. If `recap_since_last.topics_moved_forward` is non-empty,
 open with a one-line "since last time: <topic> → <status>" recap. End with one concrete next step. If
 `recalibration_hint` is set, offer a re-diagnose in one neutral line (never run it yourself). Then
-announce a short plan (~3–5 drills) and continue:
+announce a short plan — 5 drills by default (the daily pace that lands the course in ~3 months), 9 when the learner wants to finish faster (~2 months) — and continue:
 - `level == null` → **diagnose** (includes first-time setup).
 - `track.track_needs_set == true` → **goal gate**, then **practice**.
 - `profile.needs_update == true` and level set → **profile**.
