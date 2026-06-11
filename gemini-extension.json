@@ -1,6 +1,6 @@
 {
   "name": "rundrill-system-design",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "System-design coach \u2014 drills, progress, and mistake memory, inside your AI agent.",
   "author": {
     "name": "RunDrill",
@@ -10,7 +10,7 @@
   "homepage": "https://rundrill.com",
   "mcpServers": {
     "rundrill-system-design": {
-      "serverURL": "https://mcp.rundrill.com/skills/system-design"
+      "serverURL": "https://mcp.rundrill.com/coach/system-design"
     }
   }
 }

@@ -2,7 +2,7 @@
   "mcpServers": {
     "rundrill-system-design": {
       "type": "http",
-      "url": "https://mcp.rundrill.com/skills/system-design"
+      "url": "https://mcp.rundrill.com/coach/system-design"
     }
   }
 }
