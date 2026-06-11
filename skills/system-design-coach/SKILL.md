@@ -113,17 +113,21 @@ a **micro-mock** (~10-15 min), **probing reasoning, not lecturing**:
 
 ### goal gate
 
-When `track.track_needs_set` is true, ask once which goal they want. Two options, one line each —
+When `track.track_needs_set` is true, ask once which goal they want. Three options, one line each —
 personalised from `profile.domains`/`interests` if a profile exists:
 - *Learn system design* — understand distributed systems and design real ones end-to-end:
   Foundations → Components → Patterns → full system designs. (Always included — this is `core`.)
 - *Prep for the interview* — everything above **plus** the interview-performance layer: the 5-step
   framework, capacity-estimation technique, tradeoff discussion, common mistakes, and what E4/E5/E6+
-  answers look like.
+  answers look like. The ~3-month path at 5 drills/day.
+- *Systems engineering depth* — core **plus** the topics beyond the interview minimum: event
+  sourcing/CQRS, probabilistic structures (bloom/HLL), observability, secrets & authorization,
+  anti-entropy, and extra system designs. For engineers building distributed systems, not racing an
+  interview date.
 
 Save with `record {action: "goal_set", subject: "system-design", track: "<name>", track_tags:
-["<core|interview-prep>"]}`. `core` is always in scope; pick `interview-prep` to add the interview
-topics.
+["<core|interview-prep|depth>"]}`. `core` is always in scope; `interview-prep` adds the interview
+topics; `depth` adds the engineering extras.
 
 ### practice
 
