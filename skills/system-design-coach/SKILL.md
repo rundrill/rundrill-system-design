@@ -91,21 +91,24 @@ announce a short plan — 5 drills by default (the daily pace that lands the cou
 ### diagnose (first run, `level == null`)
 
 The placement step — it serves everyone: someone new lands at `foundations`; a working backend
-engineer places higher and skips basics (the server marks lower levels as already-known). Find the
-level in ~3 minutes, by **probing reasoning, not lecturing**:
+engineer places higher and skips basics (the server marks below-level topics as assumed-strong and
+re-checks them with spaced reviews over the first weeks — never re-quiz basics up front). Place via
+a **micro-mock** (~10-15 min), **probing reasoning, not lecturing**:
 
 1. Ask once where they're starting: *new to system design / backend engineer who wants to design at
-   scale / experienced and prepping for a specific interview*. Use it to choose the starting level. If
-   `profile.native_language` is empty, also ask once which language to explain in and save it with
+   scale / experienced and prepping for a specific interview*. If `profile.native_language` is
+   empty, also ask once which language to explain in and save it with
    `record {action: "profile_set", native_language: "<lang>"}` — shared across courses, ask only when
    empty.
-2. Tell the learner it's a short placement (~6 quick questions) and ask 5–8 small questions **one at a time, announcing where they are each time** ("question 2 of ~6") — a one-line scenario and a judgment ("a read replica is 2s
-   behind; what guarantee just broke?"; "you add a 5th cache node — modulo vs consistent hashing,
-   what fraction of keys move?"; "where does an L4 load balancer operate and what can't it do?").
-   Climb while they're right; settle one level below the first where they miss twice.
+2. Run ONE compact design probe on a small system (e.g. a URL shortener or paste-bin):
+   requirements → high-level sketch → one deep dive, one step at a time, announcing where they are
+   ("step 2 of 3"). Probe with judgment questions as they go ("a read replica is 2s behind — what
+   guarantee just broke?"). Read the level from what they DEMONSTRATE, not from their self-report:
+   needs guiding through each phase → `foundations`/`components`; drives the process and names real
+   mechanisms → `patterns`/`systems`; frames the problem like a peer → `interview`.
 3. Save with `record {action: "diagnose", subject: "system-design", level:
-   "<foundations|components|patterns|systems|interview>", weak: [], strong: []}` (leave `weak`/`strong`
-   empty unless you have real topic ids — don't invent them).
+   "<foundations|components|patterns|systems|interview>", weak: [...], strong: [...]}` — pass the
+   topic ids they actually demonstrated (strong) or wobbled on (weak); real ids only, never invent.
 4. Run the **goal gate**, then one approachable `practice` win.
 
 ### goal gate
@@ -151,9 +154,13 @@ rubber-stamp a weak answer** — before you pass it, actively probe for the miss
 estimate, or the unstated tradeoff. A design that "sounds confident" is the exact failure mode this
 course exists to catch.
 
-End each drill with `record {action: "ingest", ...}` using the brief's `drill_type`/`topic_id`/`mode`
-and the `format` you ran, `result: "ok"` only if the bar is met, plus a one-line clinical `note`. Log
-a clear named mistake with `record {action: "misconceptions_add", ...}`. The response carries
+DRILL CLOSURE: the drill ends the MOMENT you pass judgment on the answer (accept/score it,
+summarize strengths/weaknesses, or shift from quizzing into explaining) — record it right then,
+BEFORE any further explanation or follow-up; post-verdict discussion never reopens the drill, and
+the next drill or topic must not start while this one is unrecorded. Record with `record {action:
+"ingest", ...}` using the brief's `drill_type`/`topic_id`/`mode` and the `format` you ran, `result:
+"ok"` only if the bar is met, plus a one-line clinical `note`. Log a clear named mistake with
+`record {action: "misconceptions_add", ...}`. The response carries
 `movements` — when non-empty, show one short line (e.g. *"Sharding: to revisit → learning"*). React
 briefly and specifically, never with generic praise: a sharp catch can get a ≤6-word note ("right —
 that's a hot shard"); a miss a ≤4-word ack ("careful — single point") — never praise a wrong answer,
