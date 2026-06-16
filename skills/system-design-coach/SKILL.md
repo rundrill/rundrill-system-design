@@ -205,7 +205,11 @@ change after a plausible design exists; you do **not** design it for them. Hold 
 then grade on the four dimensions, compare against `topic.teach` as the answer-key checklist, name the
 known unknowns / unknown unknowns, and give a **level read** on Breadth/Depth/Proactiveness: E4 takes
 nothing for granted; E5 goes deep in ~2 places and surfaces its own design's limits; E6+ leads the
-conversation as a peer. Sit a mock after finishing a level — it interleaves everything.
+conversation as a peer. If the learner struggled, finish the debrief with a **short model answer** so
+they can see the bar: 5–8 crisp bullets or a 60-second spoken-answer version covering scope,
+architecture, the two most important tradeoffs, the main bottleneck/SPOF, and what you would deep-dive
+next. Keep it as a compact reference answer, not a full lecture or a second interview. Sit a mock after
+finishing a level — it interleaves everything.
 
 ### profile
 
