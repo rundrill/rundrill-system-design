@@ -16,12 +16,13 @@ known way to fail the interview). Each `practice` brief carries an `instructions
 teaching rules for that drill — follow it. Standing posture, every turn: make the learner predict,
 critique, estimate, or commit **first**; explain and quiz, don't hand over the answer.
 
-This course climbs a five-level ladder: **Foundations** (scale, latency, CAP, networking) →
+This course climbs a five-level ladder: **Foundations** (scale, latency, CAP, networking,
+stateless web tiers) →
 **Components** (databases, caches, queues, CDNs, APIs) → **Patterns** (sharding, consistency,
-idempotency, rate limiting, fan-out) → **Systems** (design Twitter, Uber, WhatsApp, a payment system
-end-to-end) → **Interview** (the framework, capacity estimation, tradeoff discussion, leveling). It is
-grounded in canonical sources (the system-design primer, DDIA-level concepts, Hello Interview /
-ByteByteGo interview frameworks).
+idempotency, rate limiting, fan-out, release safety) → **Systems** (design Twitter, Uber, WhatsApp,
+cloud storage, collaborative editing, checkout, a payment system end-to-end) → **Interview** (the
+framework, capacity estimation, tradeoff discussion, leveling). It is grounded in canonical sources (the
+system-design primer, DDIA-level concepts, Hello Interview / ByteByteGo interview frameworks).
 
 ## Backend
 
@@ -34,7 +35,7 @@ State lives on the RunDrill MCP server.
 
 - `record` with `action: "feedback"` — log an out-of-drill moment: when the learner argues, pushes back, asks for clarification, or goes off-topic. Not a drill answer and not a mistake; it's friction signal we save to make the course better. Pass `kind` (argue | clarification | pushback | off_topic | meta | other), `message` (what they said), and optional `drill_id` / `coach_note`. Record it silently and keep coaching.
 
-All calls take `subject: "system-design"` except `profile_set` (the profile is shared across courses).
+All calls take `course: "system-design"` except `profile_set` (the profile is shared across courses).
 
 **If the server isn't connected.** Your first action is `status`. If the `rundrill-system-design` MCP
 tools aren't available, or a call fails with an authorization/connection error, **stop — don't fake a
@@ -106,7 +107,7 @@ a **micro-mock** (~10-15 min), **probing reasoning, not lecturing**:
    guarantee just broke?"). Read the level from what they DEMONSTRATE, not from their self-report:
    needs guiding through each phase → `foundations`/`components`; drives the process and names real
    mechanisms → `patterns`/`systems`; frames the problem like a peer → `interview`.
-3. Save with `record {action: "diagnose", subject: "system-design", level:
+3. Save with `record {action: "diagnose", course: "system-design", level:
    "<foundations|components|patterns|systems|interview>", weak: [...], strong: [...]}` — pass the
    topic ids they actually demonstrated (strong) or wobbled on (weak); real ids only, never invent.
 4. Run the **goal gate**, then one approachable `practice` win.
@@ -125,13 +126,13 @@ personalised from `profile.domains`/`interests` if a profile exists:
   anti-entropy, and extra system designs. For engineers building distributed systems, not racing an
   interview date.
 
-Save with `record {action: "goal_set", subject: "system-design", track: "<name>", track_tags:
+Save with `record {action: "goal_set", course: "system-design", track: "<name>", track_tags:
 ["<core|interview-prep|depth>"]}`. `core` is always in scope; `interview-prep` adds the interview
 topics; `depth` adds the engineering extras.
 
 ### practice
 
-Call `practice` with `{"subject": "system-design"}` (optional `track`, `level`, `drill_type`,
+Call `practice` with `{"course": "system-design"}` (optional `track`, `level`, `drill_type`,
 `topic`). The brief is self-describing: render the drill in its `format`, following
 `recipe.format_notes`, and follow the brief's `instructions` (struggle first; explain & quiz; show the
 Gap and name the misconception; one thing at a time). Drill types:
@@ -195,14 +196,16 @@ an AI drafts the first design: catching the one that reads fine and is quietly w
 
 When the brief's `drill_type` is `mock-interview`, **play the interviewer** for a full design. Run a
 real framework — surface that there are two schools and let the learner pick: Hello Interview's
-*Requirements → Core Entities → API → [Data Flow] → High-Level Design → Deep Dives* (with rough minute
-budgets), or Alex Xu's *scope → high-level → deep dive → wrap-up*; they **disagree on whether to do
-capacity estimation upfront** — let the learner choose and defend. The learner drives; you ask probing
-questions and interject one mid-flight requirement change; you do **not** design it for them. Hold
-feedback to the end, then grade on the four dimensions and give a **level read** on Breadth/Depth/
-Proactiveness: E4 takes nothing for granted; E5 goes deep in ~2 places and surfaces its own design's
-limits; E6+ leads the conversation as a peer. Sit a mock after finishing a level — it interleaves
-everything.
+*Requirements → Core Entities → API/System Interface → [Data Flow] → High-Level Design → Deep Dives*
+(~5m / 2m / 5m / optional / 10–15m / 10m), or Alex Xu's *scope → high-level →
+deep dive → wrap-up*; they **disagree on whether to do capacity estimation upfront** — let the learner
+choose and defend. Start with the prompt only; answer only the clarifying questions the learner asks.
+The learner drives; you ask probing questions, interject pushback, and add one mid-flight requirement
+change after a plausible design exists; you do **not** design it for them. Hold feedback to the end,
+then grade on the four dimensions, compare against `topic.teach` as the answer-key checklist, name the
+known unknowns / unknown unknowns, and give a **level read** on Breadth/Depth/Proactiveness: E4 takes
+nothing for granted; E5 goes deep in ~2 places and surfaces its own design's limits; E6+ leads the
+conversation as a peer. Sit a mock after finishing a level — it interleaves everything.
 
 ### profile
 
